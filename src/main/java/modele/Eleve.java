@@ -12,24 +12,24 @@ import java.time.LocalDate;
  */
 public class Eleve {
     private Integer id;
-    private String login;
-    private String password;
     private String nom;
     private String prenom;
     private Integer cycle;
-    private LocalDate anneeCycle;
+    private Integer anneeCycle;
+    private String login;
+    private String password;
     
     /**
      * Constructeur de la classe Eleve.
      * @param id
-     * @param login
-     * @param password
      * @param nom
      * @param prenom
      * @param cycle
-     * @param anneeCycle 
+     * @param anneeCycle
+     * @param login
+     * @param password
      */
-    public Eleve(Integer id, String login, String password, String nom, String prenom, Integer cycle, LocalDate anneeCycle)
+    public Eleve(Integer id, String nom, String prenom, Integer cycle, Integer anneeCycle, String login, String password)
     {
         this.id = id;
         this.login = login;
@@ -66,7 +66,7 @@ public class Eleve {
         return cycle;
     }
 
-    public LocalDate getAnneeCycle() {
+    public Integer getAnneeCycle() {
         return anneeCycle;
     }
     
