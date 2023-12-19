@@ -50,6 +50,7 @@ public class ConnexionController implements Initializable {
         {
             errorMessage.setText("Erreur ! Vous n'avez pas rempli l'un des deux champs.");
         }
+        else errorMessage.setText("");
     }
     
 }
