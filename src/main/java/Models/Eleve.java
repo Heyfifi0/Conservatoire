@@ -7,7 +7,7 @@ package Models;
 import java.time.LocalDate;
 
 /**
- *
+ * La classe Eleve.
  * @author miste
  */
 public class Eleve {
@@ -21,13 +21,13 @@ public class Eleve {
     
     /**
      * Constructeur de la classe Eleve.
-     * @param id
-     * @param nom
-     * @param prenom
-     * @param cycle
-     * @param anneeCycle
-     * @param login
-     * @param password
+     * @param id L'identifiant de l'élève.
+     * @param nom Le nom de famille de l'élève.
+     * @param prenom Le prénom de l'élève.
+     * @param cycle Le cycle de l'élève.
+     * @param anneeCycle L'année du cycle de l'élève.
+     * @param login Le login de l'élève pour se connecter.
+     * @param password Le mot de passe de l'élève pour se connecter.
      */
     public Eleve(Integer id, String nom, String prenom, Integer cycle, Integer anneeCycle, String login, String password)
     {

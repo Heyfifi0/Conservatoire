@@ -5,7 +5,7 @@
 package Models;
 
 /**
- *
+ * La classe Discipline.
  * @author miste
  */
 public class Discipline {
@@ -14,8 +14,8 @@ public class Discipline {
     
     /**
      * Constructeur de la classe Discipline.
-     * @param id
-     * @param libelle 
+     * @param id L'identifiant de la discipline.
+     * @param libelle Le libellé de la discipline.
      */
     public Discipline(Integer id, String libelle)
     {
@@ -23,6 +23,8 @@ public class Discipline {
         this.libelle = libelle;
     }
     
+    
+    // Getters
     public Integer getId()
     {
         return this.id;

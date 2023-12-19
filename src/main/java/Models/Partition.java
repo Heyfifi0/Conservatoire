@@ -5,7 +5,7 @@
 package Models;
 
 /**
- *
+ * La classe Partition.
  * @author miste
  */
 public class Partition {
@@ -15,9 +15,9 @@ public class Partition {
     
     /**
      * Constructeur de la classe Partition.
-     * @param id
-     * @param nomPartition
-     * @param nomAuteur 
+     * @param id L'identifiant de la partition.
+     * @param nomPartition Le nom de la partition.
+     * @param nomAuteur Le nom de l'auteur de la partition.
      */
     public Partition(Integer id, String nomPartition, String nomAuteur)
     {
@@ -26,6 +26,8 @@ public class Partition {
         this.nomAuteur = nomAuteur;
     }
     
+    
+    // Getters
     public Integer getId()
     {
         return this.id;
