@@ -12,7 +12,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -23,11 +25,17 @@ import javafx.scene.layout.BorderPane;
 public class MenuController implements Initializable {
     
     @FXML
+    private Button lienHoraires;
+    
+    @FXML
     private Button lienAjouterPartition;
 
     @FXML
     private Button lienChercherPartition;
     
+    @FXML
+    private Button lienDeconnexion;
+
     @FXML
     private BorderPane contentPane;
     
@@ -66,6 +74,31 @@ public class MenuController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         lienChercherPartition.setDisable(true);
         lienAjouterPartition.setDisable(true);
-    }    
+        lienDeconnexion.setDisable(true);
+    }
+    
+    /**
+     * Permet à l'utilisateur de se déconnecter
+     * à l'aide du bouton "Se déconnecter".
+     * @param event Un évènement.
+     */
+    @FXML
+    public void seDeconnecter(ActionEvent event)
+    {
+        Alert alert = new Alert(Alert.AlertType.WARNING, "Voulez-vous vraiment vous déconnecter ?", ButtonType.APPLY, ButtonType.CANCEL);
+        alert.showAndWait();
+        
+        afficherVue(event);
+    }
+    
+    /**
+     * Active les boutons sur le menu au moment de la connexion.
+     */
+    public void activerBoutons()
+    {
+        lienChercherPartition.setDisable(false);
+        lienAjouterPartition.setDisable(false);
+        lienDeconnexion.setDisable(false);
+    }
     
 }

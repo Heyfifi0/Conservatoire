@@ -1,5 +1,6 @@
 package proj.conservatoire;
 
+import Models.Eleve;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +15,7 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    private static Eleve eleve;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -33,6 +35,14 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+    
+    public static Eleve getEleve() {
+        return eleve;
+    }
+
+    public static void setEleve(Eleve eleve) {
+        App.eleve = eleve;
     }
 
 }

@@ -16,8 +16,6 @@ public class Eleve {
     private String prenom;
     private Integer cycle;
     private Integer anneeCycle;
-    private String login;
-    private String password;
     
     /**
      * Constructeur de la classe Eleve.
@@ -26,14 +24,10 @@ public class Eleve {
      * @param prenom Le prénom de l'élève.
      * @param cycle Le cycle de l'élève.
      * @param anneeCycle L'année du cycle de l'élève.
-     * @param login Le login de l'élève pour se connecter.
-     * @param password Le mot de passe de l'élève pour se connecter.
      */
-    public Eleve(Integer id, String nom, String prenom, Integer cycle, Integer anneeCycle, String login, String password)
+    public Eleve(Integer id, String nom, String prenom, Integer cycle, Integer anneeCycle)
     {
         this.id = id;
-        this.login = login;
-        this.password = password;
         this.nom = nom;
         this.prenom = prenom;
         this.cycle = cycle;
@@ -44,14 +38,6 @@ public class Eleve {
     // Getters
     public Integer getId() {
         return id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public String getNom() {
