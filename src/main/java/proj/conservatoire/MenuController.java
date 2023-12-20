@@ -6,7 +6,9 @@ package proj.conservatoire;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -38,6 +41,7 @@ public class MenuController implements Initializable {
 
     @FXML
     private BorderPane contentPane;
+    
     
     /**
      * Charge une vue FXML et l'attribue au centre du BorderPane.
@@ -94,12 +98,15 @@ public class MenuController implements Initializable {
     
     /**
      * Active les boutons sur le menu au moment de la connexion.
+     * @throws java.sql.SQLException
      */
-    public void activerBoutons()
+    public void activerBoutons() throws SQLException
     {
         lienChercherPartition.setDisable(false);
         lienAjouterPartition.setDisable(false);
         lienDeconnexion.setDisable(false);
+        
+
     }
     
 }

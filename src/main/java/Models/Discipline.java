@@ -4,6 +4,8 @@
  */
 package Models;
 
+import java.util.ArrayList;
+
 /**
  * La classe Discipline.
  * @author miste
@@ -11,6 +13,7 @@ package Models;
 public class Discipline {
     private Integer id;
     private String libelle;
+    private ArrayList<Eleve> lesEleves;
     
     /**
      * Constructeur de la classe Discipline.
@@ -21,6 +24,8 @@ public class Discipline {
     {
         this.id = id;
         this.libelle = libelle;
+        
+        lesEleves = new ArrayList<>();
     }
     
     

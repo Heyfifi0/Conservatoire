@@ -14,6 +14,11 @@ INSERT INTO PARTITIONS VALUES
 (1, "Helena", "My Chemical Romance"),
 (2, "Reverse", "Caravan Palace"),
 (3, "Mr Brightside", "The Killers");
+(4, "Spaceman", "The Killers"),
+(5, "Hot N Cold", "Katy Perry"),
+(6, "The Kids From Yesterday", "My Chemical Romance"),
+(7, "Evacuate The Dancefloor", "Cascada"),
+(8, "I'm Picky", "Shaka Ponk");
 
 
 -- PARTITION_ELEVE

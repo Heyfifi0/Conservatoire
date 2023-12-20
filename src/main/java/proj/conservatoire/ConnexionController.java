@@ -6,11 +6,13 @@ package proj.conservatoire;
 
 import Data.DAO;
 import Models.Eleve;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -36,7 +38,9 @@ public class ConnexionController implements Initializable {
     
     @FXML
     private Label errorMessage;
-
+    
+    private MenuController menuController;
+    
     /**
      * Initializes the controller class.
      */
@@ -48,9 +52,10 @@ public class ConnexionController implements Initializable {
     /**
      * Permet à l'utilisateur de se connecter à l'application
      * à l'aide du bouton "Valider".
+     * @return 
      * @throws SQLException 
      */
-    public void seConnecter() throws SQLException
+    public void seConnecter() throws SQLException, IOException
     {
         String login = loginTextField.getText();
         String password = passwordField.getText();
@@ -73,14 +78,11 @@ public class ConnexionController implements Initializable {
                 // Création de l'objet élève
                 createEleve(res);
                 
-                // Activation des boutons sur le menu
-                activerBoutons();
-                
-                res.close();
+                //App.setRoot("/vues/ajouterPartition");
             }
             else errorMessage.setText("Votre login ou votre mot de passe est incorrect!");
+ 
         }
-        
         
     }
     
@@ -101,13 +103,5 @@ public class ConnexionController implements Initializable {
         Eleve eleve = new Eleve(id, nom, prenom, cycle, anneeCycle);
         
         App.setEleve(eleve);
-    }
-    
-    /**
-     * Appelle la méthode "activerBoutons()" de la classe MenuController.
-     */
-    private void activerBoutons()
-    {
-        System.out.println("Appel de la méthode : activerBoutons().");
     }
 }
