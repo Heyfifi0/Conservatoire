@@ -72,9 +72,10 @@ public class MenuController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        lienChercherPartition.setDisable(true);
-        lienAjouterPartition.setDisable(true);
-        lienDeconnexion.setDisable(true);
+//        lienChercherPartition.setDisable(true);
+//        lienAjouterPartition.setDisable(true);
+//        lienDeconnexion.setDisable(true);
+
     }
     
     /**

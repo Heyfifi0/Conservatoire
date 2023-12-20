@@ -70,8 +70,13 @@ public class ConnexionController implements Initializable {
             // Check si le MDP saisi est égal au MDP de l'élève dans la BDD
             if(res.next() && password.equals(res.getString("MDP")))
             {
+                // Création de l'objet élève
                 createEleve(res);
+                
+                // Activation des boutons sur le menu
                 activerBoutons();
+                
+                res.close();
             }
             else errorMessage.setText("Votre login ou votre mot de passe est incorrect!");
         }
@@ -104,6 +109,5 @@ public class ConnexionController implements Initializable {
     private void activerBoutons()
     {
         System.out.println("Appel de la méthode : activerBoutons().");
-        // TODO
     }
 }
