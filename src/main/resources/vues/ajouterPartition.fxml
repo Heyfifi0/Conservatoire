@@ -14,7 +14,7 @@
     </stylesheets>
    <children>
       <Label layoutX="71.0" layoutY="27.0" text="Liste des partitions:" />
-      <TableView fx:id="listePartitions" focusTraversable="false" layoutX="71.0" layoutY="45.0" prefHeight="179.0" prefWidth="340.0">
+      <TableView fx:id="listePartitions" layoutX="71.0" layoutY="45.0" prefHeight="179.0" prefWidth="340.0">
         <columns>
           <TableColumn fx:id="colonneNom" prefWidth="75.0" text="Nom" />
           <TableColumn fx:id="colonneAuteur" prefWidth="75.0" text="Auteur" />
@@ -29,6 +29,6 @@
       <Label fx:id="labelAuteur" layoutX="71.0" layoutY="314.0" text="Auteur:" />
       <TextField fx:id="nomAuteur" layoutX="71.0" layoutY="331.0" />
       <Button fx:id="confirmerAjout" layoutX="150.0" layoutY="363.0" mnemonicParsing="false" onMouseClicked="#ajouterPartition" text="Confirmer" />
-      <Button layoutX="261.0" layoutY="233.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Ajouter au classeur" />
+      <Button layoutX="261.0" layoutY="233.0" mnemonicParsing="false" onMouseClicked="#ajouterPartitionClasseur" prefHeight="25.0" prefWidth="149.0" text="Ajouter au classeur" />
    </children>
 </AnchorPane>

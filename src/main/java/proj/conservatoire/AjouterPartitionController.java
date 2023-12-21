@@ -168,15 +168,20 @@ public class AjouterPartitionController implements Initializable {
      */
     public void ajouterPartitionClasseur() throws SQLException
     {
+        // Récupérer l'item choisi ...
+        Partition partitionChoisie = listePartitions.getSelectionModel().getSelectedItem();
         
         CallableStatement call = DAO.getConnection().prepareCall("call insertPartitionEleve(?, ?, ?)");
         // TODO ...
         
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Voulez-vous ajouter cette partition au classeur ?", ButtonType.APPLY, ButtonType.CANCEL);
+        alert.showAndWait();
         
         if(alert.getResult() == ButtonType.APPLY)
         {
             // Exécuter la requête ...
+            
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "La partition a été ajoutée au classeur.", ButtonType.CLOSE);
         }
         else {
             // TODO ...

@@ -1,6 +1,6 @@
 -- DISCIPLINE
 INSERT INTO DISCIPLINE VALUES
-(172, "Guitare");
+(172, "Guitare"),
 (173, "Luth");
 
 
