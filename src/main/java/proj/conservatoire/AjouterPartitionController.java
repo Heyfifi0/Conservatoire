@@ -18,7 +18,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -42,19 +44,37 @@ public class AjouterPartitionController implements Initializable {
     private ObservableList<Partition> lesPartitions = FXCollections.observableArrayList();
     
     @FXML
+    private Label labelNom;
+    
+    @FXML
+    private Label labelAuteur;
+    
+    @FXML
     private TextField nomPartition;
     
     @FXML
     private TextField nomAuteur;
-
     
+    @FXML
+    private Button confimerAjout;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        labelNom.setVisible(false);
+        nomPartition.setVisible(false);
+        
+        labelAuteur.setVisible(false);
+        nomAuteur.setVisible(false);
+        
+        confimerAjout.setVisible(false);
+        
         colonneNom.setCellValueFactory(cellData -> cellData.getValue().getNomPartitionProperty());
         colonneAuteur.setCellValueFactory(cellData -> cellData.getValue().getNomAuteurProperty());
+        
+        //listePartitions.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         
         try {
             remplirListe();
@@ -85,36 +105,68 @@ public class AjouterPartitionController implements Initializable {
     }
     
     /**
+     * Active le formulaire pour ajouter une partition avec le bouton "Ajouter une partition".
+     */
+    public void showAjouterPartition()
+    {
+        labelNom.setVisible(true);
+        nomPartition.setVisible(true);
+        
+        labelAuteur.setVisible(true);
+        nomAuteur.setVisible(true);
+        
+        confimerAjout.setVisible(true);
+    }
+    
+    /**
      * Ajoute une partition à la liste.
      */
-    public void ajouterPartition()
+    public void ajouterPartition() throws SQLException
     {
         String nom = nomPartition.getText();
         String auteur = nomAuteur.getText();
         
+        // Check si les champs sont vides
         if(nom.isEmpty() || auteur.isEmpty())
         {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Vous n'avez pas rempli l'un des deux champs.", ButtonType.CLOSE);
         }
-        
-        
-    }
-    
-    
-    /**
-     * Vérifie si une partition existe.
-     */
-    private void partitionExiste()
-    {
-        // TODO
+        else {
+            CallableStatement call = DAO.getConnection().prepareCall("call insertPartition(?, ?);");
+            call.setString(1, nom);
+            call.setString(2, auteur);
+
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Voulez-vous vraiment ajouter cette partition ?", ButtonType.APPLY, ButtonType.CANCEL);
+            alert.showAndWait();
+            
+            if (alert.getResult() == ButtonType.APPLY)
+            {
+                call.execute();
+                Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Votre partition a été ajoutée à la liste!", ButtonType.CLOSE);
+                confirm.showAndWait();
+                
+                nomPartition.clear();
+                nomAuteur.clear();
+                
+                //listePartitions.refresh(); // Marche pas lol
+            }
+            else {
+                nomPartition.clear();
+                nomAuteur.clear();
+            }
+
+        }
+
     }
     
     /**
      * Ajoute la partition sélectionnée au classeur de l'élève.
      */
-    private void ajouterPartitionClasseur()
+    public void ajouterPartitionClasseur() throws SQLException
     {
         // TODO
+        CallableStatement call = DAO.getConnection().prepareCall("call insertPartitionEleve(?, ?, ?)");
+        
     }
     
 

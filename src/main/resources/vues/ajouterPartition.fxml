@@ -14,20 +14,18 @@
     </stylesheets>
    <children>
       <Label layoutX="71.0" layoutY="27.0" text="Liste des partitions:" />
-      <TableView fx:id="listePartitions" layoutX="71.0" layoutY="45.0" prefHeight="179.0" prefWidth="292.0">
+      <TableView fx:id="listePartitions" focusTraversable="false" layoutX="71.0" layoutY="45.0" prefHeight="179.0" prefWidth="340.0">
         <columns>
           <TableColumn fx:id="colonneNom" prefWidth="75.0" text="Nom" />
           <TableColumn fx:id="colonneAuteur" prefWidth="75.0" text="Auteur" />
         </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
       </TableView>
-      <Label layoutX="71.0" layoutY="237.0" text="Ajouter une partition:" />
-      <Label layoutX="71.0" layoutY="263.0" text="Nom:" />
+      <Button layoutX="71.0" layoutY="233.0" mnemonicParsing="false" onMouseClicked="#showAjouterPartition" prefHeight="25.0" prefWidth="149.0" text="Ajouter une partition" />
+      <Label fx:id="labelNom" layoutX="71.0" layoutY="263.0" text="Nom:" />
       <TextField fx:id="nomPartition" layoutX="71.0" layoutY="280.0" />
-      <Label layoutX="71.0" layoutY="314.0" text="Auteur:" />
+      <Label fx:id="labelAuteur" layoutX="71.0" layoutY="314.0" text="Auteur:" />
       <TextField fx:id="nomAuteur" layoutX="71.0" layoutY="331.0" />
-      <Button layoutX="150.0" layoutY="363.0" mnemonicParsing="false" onMouseClicked="#ajouterPartition" text="Confirmer" />
+      <Button fx:id="confirmerAjout" layoutX="150.0" layoutY="363.0" mnemonicParsing="false" onMouseClicked="#ajouterPartition" text="Confirmer" />
+      <Button layoutX="261.0" layoutY="233.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Ajouter au classeur" />
    </children>
 </AnchorPane>

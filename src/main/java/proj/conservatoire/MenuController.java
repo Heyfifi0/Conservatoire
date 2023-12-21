@@ -67,7 +67,7 @@ public class MenuController implements Initializable {
         
         loadFXML(getClass().getResource(vue));
         
-        System.out.println("Switch sur la vue : " + vue);
+        System.out.println(String.format("\nSwitch sur la vue : %s", vue));
         
     }
 
