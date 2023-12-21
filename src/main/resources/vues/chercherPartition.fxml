@@ -6,14 +6,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proj.conservatoire.ChercherPartitionController">
     <stylesheets>
         <URL value="@/styles/chercherPartition.css" />
     </stylesheets>
    <children>
-      <Label layoutX="85.0" layoutY="14.0" text="Vos partitions" />
-      <TableView fx:id="listePartitions" layoutX="85.0" layoutY="102.0" prefHeight="270.0" prefWidth="325.0">
+      <Label layoutX="33.0" layoutY="6.0" text="Vos partitions">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <TableView fx:id="listePartitions" layoutX="33.0" layoutY="80.0" prefHeight="300.0" prefWidth="325.0">
         <columns>
           <TableColumn fx:id="colonneNom" prefWidth="140.0" text="Nom" />
           <TableColumn fx:id="colonneAuteur" prefWidth="128.0" text="Auteur" />
@@ -23,7 +27,10 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="barreRecherche" layoutX="85.0" layoutY="77.0" />
-      <Label layoutX="85.0" layoutY="60.0" text="Rechercher par auteur :" />
+      <TextField fx:id="barreRecherche" layoutX="33.0" layoutY="55.0" prefWidth="190.0" />
+      <Label layoutX="33.0" layoutY="34.0" text="Rechercher par auteur :">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
    </children>
 </AnchorPane>

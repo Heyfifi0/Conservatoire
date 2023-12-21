@@ -7,14 +7,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proj.conservatoire.AjouterPartitionController">
     <stylesheets>
         <URL value="@/styles/ajouterPartition.css" />
     </stylesheets>
    <children>
-      <Label layoutX="71.0" layoutY="27.0" text="Liste des partitions:" />
-      <TableView fx:id="listePartitions" layoutX="71.0" layoutY="45.0" prefHeight="179.0" prefWidth="340.0">
+      <Label layoutX="14.0" layoutY="30.0" text="Liste des partitions:">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <TableView fx:id="listePartitions" layoutX="14.0" layoutY="51.0" prefHeight="290.0" prefWidth="340.0">
         <columns>
           <TableColumn fx:id="colonneNom" prefWidth="75.0" text="Nom" />
           <TableColumn fx:id="colonneAuteur" prefWidth="75.0" text="Auteur" />
@@ -23,12 +27,24 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="71.0" layoutY="233.0" mnemonicParsing="false" onMouseClicked="#showAjouterPartition" prefHeight="25.0" prefWidth="149.0" text="Ajouter une partition" />
-      <Label fx:id="labelNom" layoutX="71.0" layoutY="263.0" text="Nom:" />
-      <TextField fx:id="nomPartition" layoutX="71.0" layoutY="280.0" />
-      <Label fx:id="labelAuteur" layoutX="71.0" layoutY="314.0" text="Auteur:" />
-      <TextField fx:id="nomAuteur" layoutX="71.0" layoutY="331.0" />
-      <Button fx:id="confirmerAjout" layoutX="150.0" layoutY="363.0" mnemonicParsing="false" onMouseClicked="#ajouterPartition" text="Confirmer" />
-      <Button fx:id="ajouterClasseur" layoutX="261.0" layoutY="233.0" mnemonicParsing="false" onMouseClicked="#ajouterPartitionClasseur" prefHeight="25.0" prefWidth="149.0" text="Ajouter au classeur" />
+      <Button layoutX="367.0" layoutY="51.0" mnemonicParsing="false" onMouseClicked="#showAjouterPartition" prefHeight="25.0" prefWidth="149.0" text="Ajouter une partition" />
+      <Label fx:id="labelNom" layoutX="367.0" layoutY="86.0" text="Nom:">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <TextField fx:id="nomPartition" layoutX="367.0" layoutY="107.0" />
+      <Label fx:id="labelAuteur" layoutX="367.0" layoutY="142.0" text="Auteur:">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <TextField fx:id="nomAuteur" layoutX="367.0" layoutY="163.0" />
+      <Button fx:id="confirmerAjout" layoutX="446.0" layoutY="195.0" mnemonicParsing="false" onMouseClicked="#ajouterPartition" text="Confirmer">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button fx:id="ajouterClasseur" layoutX="14.0" layoutY="348.0" mnemonicParsing="false" onMouseClicked="#ajouterPartitionClasseur" prefHeight="25.0" prefWidth="149.0" text="Ajouter au classeur">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
    </children>
 </AnchorPane>

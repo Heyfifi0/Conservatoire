@@ -73,6 +73,8 @@ public class MenuController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -93,7 +95,11 @@ public class MenuController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.WARNING, "Voulez-vous vraiment vous déconnecter ?", ButtonType.APPLY, ButtonType.CANCEL);
         alert.showAndWait();
         
-        afficherVue(event);
+        if(alert.getResult() == ButtonType.APPLY)
+        {
+           afficherVue(event); 
+        }
+
     }
     
     /**

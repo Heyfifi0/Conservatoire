@@ -43,6 +43,8 @@ public class ConnexionController implements Initializable {
     
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -51,9 +53,9 @@ public class ConnexionController implements Initializable {
     
     /**
      * Permet à l'utilisateur de se connecter à l'application
-     * à l'aide du bouton "Valider".
-     * @return 
+     * à l'aide du bouton "Valider". 
      * @throws SQLException 
+     * @throws java.io.IOException 
      */
     public void seConnecter() throws SQLException, IOException
     {
