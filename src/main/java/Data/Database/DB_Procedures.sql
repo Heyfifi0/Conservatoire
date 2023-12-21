@@ -14,9 +14,10 @@ END $
 -- Récupère les partitions de la table PARTITIONS.
 CREATE OR REPLACE PROCEDURE getPartitions()
 BEGIN
-    SELECT NOM, AUTEUR
+    SELECT *
     FROM PARTITIONS;
 END $
+
 
 -- Insère une partition dans la table PARTITIONS.
 CREATE OR REPLACE PROCEDURE insertPartition(IN nom CHAR(50), IN auteur CHAR(50))
@@ -24,4 +25,13 @@ BEGIN
     INSERT INTO PARTITIONS (NOM, AUTEUR)
     VALUES
     (nom, auteur);
+END $
+
+
+-- Insère une partition et un élève dans la table PARTITION_ELEVE, soit le 'classeur'.
+CREATE OR REPLACE PROCEDURE insertPartitionEleve(IN idEleve INT(50), IN idPartition INT(50), IN numeroPage INT(50))
+BEGIN
+    INSERT INTO PARTITION_ELEVE
+    VALUES
+    (idEleve, idPartition, numeroPage);
 END $

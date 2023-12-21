@@ -4,6 +4,8 @@
  */
 package Models;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -12,22 +14,30 @@ import javafx.beans.property.StringProperty;
  * @author miste
  */
 public class Partition {
+    private IntegerProperty id;
     private StringProperty nomPartition;
     private StringProperty nomAuteur;
     
     /**
      * Constructeur de la classe Partition.
+     * @param id L'identifiant de la partition.
      * @param nomPartition Le nom de la partition.
      * @param nomAuteur Le nom de l'auteur de la partition.
      */
-    public Partition(String nomPartition, String nomAuteur)
+    public Partition(Integer id, String nomPartition, String nomAuteur)
     {
+        this.id = new SimpleIntegerProperty(id);
         this.nomPartition = new SimpleStringProperty(nomPartition);
         this.nomAuteur = new SimpleStringProperty(nomAuteur);
     }
     
     
-    // Getters  
+    // Getters
+    public Integer getId()
+    {
+        return this.id.get();
+    }
+    
     public String getNomPartition()
     {
         return this.nomPartition.get();
@@ -39,6 +49,11 @@ public class Partition {
     }
     
     // Getters (Property)
+    public IntegerProperty getIdProperty()
+    {
+        return this.id;
+    }
+    
     public StringProperty getNomPartitionProperty()
     {
         return this.nomPartition;

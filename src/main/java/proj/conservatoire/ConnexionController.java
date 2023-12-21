@@ -78,6 +78,7 @@ public class ConnexionController implements Initializable {
                 // Création de l'objet élève
                 createEleve(res);
                 
+                errorMessage.setText("Vous êtes connecté!");
                 //App.setRoot("/vues/ajouterPartition");
             }
             else errorMessage.setText("Votre login ou votre mot de passe est incorrect!");

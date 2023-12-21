@@ -21,6 +21,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -57,6 +58,9 @@ public class AjouterPartitionController implements Initializable {
     
     @FXML
     private Button confirmerAjout;
+    
+    @FXML
+    private Button ajouterClasseur;
 
     /**
      * Initializes the controller class.
@@ -65,6 +69,8 @@ public class AjouterPartitionController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        listePartitions.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        
         labelNom.setVisible(false);
         nomPartition.setVisible(false);
         
@@ -96,11 +102,11 @@ public class AjouterPartitionController implements Initializable {
         
         while(res.next())
         {
-            
+            Integer id = res.getInt("ID");
             String nom = res.getString("NOM");
             String auteur = res.getString("AUTEUR");
             
-            Partition partition = new Partition(nom, auteur);
+            Partition partition = new Partition(id, nom, auteur);
             lesPartitions.add(partition);
         }
         listePartitions.setItems(lesPartitions);
@@ -122,6 +128,7 @@ public class AjouterPartitionController implements Initializable {
     
     /**
      * Ajoute une partition à la liste.
+     * @throws java.sql.SQLException
      */
     public void ajouterPartition() throws SQLException
     {
@@ -165,27 +172,48 @@ public class AjouterPartitionController implements Initializable {
     
     /**
      * Ajoute la partition sélectionnée au classeur de l'élève.
+     * @throws java.sql.SQLException
      */
     public void ajouterPartitionClasseur() throws SQLException
     {
-        // Récupérer l'item choisi ...
-        Partition partitionChoisie = listePartitions.getSelectionModel().getSelectedItem();
+        // TODO : Check si la sélection est nulle
         
-        CallableStatement call = DAO.getConnection().prepareCall("call insertPartitionEleve(?, ?, ?)");
-        // TODO ...
         
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Voulez-vous ajouter cette partition au classeur ?", ButtonType.APPLY, ButtonType.CANCEL);
-        alert.showAndWait();
+        Integer idEleve = App.getEleve().getId();
         
-        if(alert.getResult() == ButtonType.APPLY)
+        ObservableList<Partition> partitionsChoisies = listePartitions.getSelectionModel().getSelectedItems();
+        
+        Integer numeroPage = 1; //Jsp quoi en faire
+        
+        if(partitionsChoisies.isEmpty())
         {
-            // Exécuter la requête ...
-            
-            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "La partition a été ajoutée au classeur.", ButtonType.CLOSE);
+            Alert alert = new Alert(Alert.AlertType.ERROR, "????", ButtonType.CLOSE);
+            alert.showAndWait();
         }
         else {
-            // TODO ...
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Voulez-vous ajouter cette partition au classeur ?", ButtonType.APPLY, ButtonType.CANCEL);
+            alert.showAndWait();
+
+            if(alert.getResult() == ButtonType.APPLY)
+            {
+                 for(Partition partition : partitionsChoisies)
+                 {
+                     System.out.println(partition.getId() + " - " + partition.getNomPartition());
+                     
+                     CallableStatement call = DAO.getConnection().prepareCall("call insertPartitionEleve(?, ?, ?);");
+                     call.setInt(1, idEleve);
+                     call.setInt(2, partition.getId());
+                     call.setInt(3, numeroPage);
+                 }
+
+                 Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "La partition a été ajoutée au classeur.", ButtonType.CLOSE);
+                 confirm.showAndWait();
+            }
+            else {
+                // Do nothing?
+            }
         }
+        
     }
     
 
