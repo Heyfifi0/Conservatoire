@@ -41,7 +41,7 @@ public class AjouterPartitionController implements Initializable {
     @FXML
     private TableColumn<Partition, String> colonneAuteur;
     
-    private ObservableList<Partition> lesPartitions = FXCollections.observableArrayList();
+    private final ObservableList<Partition> lesPartitions = FXCollections.observableArrayList();
     
     @FXML
     private Label labelNom;
@@ -56,10 +56,12 @@ public class AjouterPartitionController implements Initializable {
     private TextField nomAuteur;
     
     @FXML
-    private Button confimerAjout;
+    private Button confirmerAjout;
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,7 +71,7 @@ public class AjouterPartitionController implements Initializable {
         labelAuteur.setVisible(false);
         nomAuteur.setVisible(false);
         
-        confimerAjout.setVisible(false);
+        confirmerAjout.setVisible(false);
         
         colonneNom.setCellValueFactory(cellData -> cellData.getValue().getNomPartitionProperty());
         colonneAuteur.setCellValueFactory(cellData -> cellData.getValue().getNomAuteurProperty());
@@ -115,7 +117,7 @@ public class AjouterPartitionController implements Initializable {
         labelAuteur.setVisible(true);
         nomAuteur.setVisible(true);
         
-        confimerAjout.setVisible(true);
+        confirmerAjout.setVisible(true);
     }
     
     /**
@@ -130,7 +132,9 @@ public class AjouterPartitionController implements Initializable {
         if(nom.isEmpty() || auteur.isEmpty())
         {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Vous n'avez pas rempli l'un des deux champs.", ButtonType.CLOSE);
+            alert.showAndWait();
         }
+        
         else {
             CallableStatement call = DAO.getConnection().prepareCall("call insertPartition(?, ?);");
             call.setString(1, nom);
@@ -164,9 +168,19 @@ public class AjouterPartitionController implements Initializable {
      */
     public void ajouterPartitionClasseur() throws SQLException
     {
-        // TODO
-        CallableStatement call = DAO.getConnection().prepareCall("call insertPartitionEleve(?, ?, ?)");
         
+        CallableStatement call = DAO.getConnection().prepareCall("call insertPartitionEleve(?, ?, ?)");
+        // TODO ...
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Voulez-vous ajouter cette partition au classeur ?", ButtonType.APPLY, ButtonType.CANCEL);
+        
+        if(alert.getResult() == ButtonType.APPLY)
+        {
+            // Exécuter la requête ...
+        }
+        else {
+            // TODO ...
+        }
     }
     
 
