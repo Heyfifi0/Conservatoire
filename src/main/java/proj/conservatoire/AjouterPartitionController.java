@@ -25,6 +25,7 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 
 /**
  * FXML Controller class
@@ -143,16 +144,18 @@ public class AjouterPartitionController implements Initializable {
         }
         
         else {
-            CallableStatement call = DAO.getConnection().prepareCall("call insertPartition(?, ?);");
-            call.setString(1, nom);
-            call.setString(2, auteur);
 
             Alert alert = new Alert(Alert.AlertType.WARNING, "Voulez-vous vraiment ajouter cette partition ?", ButtonType.APPLY, ButtonType.CANCEL);
             alert.showAndWait();
             
             if (alert.getResult() == ButtonType.APPLY)
             {
+                CallableStatement call = DAO.getConnection().prepareCall("call insertPartition(?, ?);");
+                call.setString(1, nom);
+                call.setString(2, auteur);
+                
                 call.execute();
+                
                 Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Votre partition a été ajoutée à la liste!", ButtonType.CLOSE);
                 confirm.showAndWait();
                 
@@ -183,11 +186,9 @@ public class AjouterPartitionController implements Initializable {
         
         ObservableList<Partition> partitionsChoisies = listePartitions.getSelectionModel().getSelectedItems();
         
-        Integer numeroPage = 1; //Jsp quoi en faire
-        
         if(partitionsChoisies.isEmpty())
         {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "????", ButtonType.CLOSE);
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Veuillez sélectionner une ou plusieurs partitions.", ButtonType.CLOSE);
             alert.showAndWait();
         }
         else {
@@ -200,17 +201,25 @@ public class AjouterPartitionController implements Initializable {
                  {
                      System.out.println(partition.getId() + " - " + partition.getNomPartition());
                      
+                     String headerText = "Choisissez une page pour la partition : " + partition.getNomPartition() + " - " + partition.getNomAuteur();
+                     
+                     // Fenêtre pour demander à l'utilisateur quelle page choisir
+                     TextInputDialog dialog = new TextInputDialog();
+                     dialog.setHeaderText(headerText);
+                     dialog.showAndWait();
+                     
+                     String numeroPage = dialog.getEditor().getText();
+
                      CallableStatement call = DAO.getConnection().prepareCall("call insertPartitionEleve(?, ?, ?);");
                      call.setInt(1, idEleve);
                      call.setInt(2, partition.getId());
-                     call.setInt(3, numeroPage);
+                     call.setInt(3, Integer.parseInt(numeroPage));
+                     
+                     call.execute();
                  }
 
                  Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "La partition a été ajoutée au classeur.", ButtonType.CLOSE);
                  confirm.showAndWait();
-            }
-            else {
-                // Do nothing?
             }
         }
         

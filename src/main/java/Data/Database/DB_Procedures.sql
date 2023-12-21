@@ -1,6 +1,5 @@
 -- Mettre les procédures ici
 DELIMITER $
-DELIMITER ;
 
 -- Récupère le login de l'élève de la table ELEVE.
 CREATE OR REPLACE PROCEDURE getLoginEleve(IN login CHAR(50))
@@ -35,3 +34,23 @@ BEGIN
     VALUES
     (idEleve, idPartition, numeroPage);
 END $
+
+
+-- Récupère les partitions d'un élève donné.
+CREATE OR REPLACE PROCEDURE getPartitionEleve(IN idEleve INT(50))
+BEGIN
+    SELECT *
+    FROM PARTITION_ELEVE
+    WHERE ELE_ID = idEleve;
+END $
+
+
+
+
+
+
+
+
+
+
+DELIMITER ;
