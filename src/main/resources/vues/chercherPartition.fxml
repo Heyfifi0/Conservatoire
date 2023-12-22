@@ -19,7 +19,7 @@
          </font></Label>
       <TableView fx:id="listePartitions" layoutX="33.0" layoutY="80.0" prefHeight="300.0" prefWidth="400.0">
         <columns>
-          <TableColumn fx:id="colonneNom" prefWidth="140.0" text="Nom" />
+          <TableColumn fx:id="colonneNom" prefWidth="140.0" text="Titre" />
           <TableColumn fx:id="colonneAuteur" prefWidth="128.0" text="Auteur" />
             <TableColumn fx:id="colonnePage" prefWidth="49.0" text="Page" />
         </columns>
