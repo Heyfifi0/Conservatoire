@@ -162,7 +162,8 @@ public class AjouterPartitionController implements Initializable {
                 nomPartition.clear();
                 nomAuteur.clear();
                 
-                //listePartitions.refresh(); // Marche pas lol
+                listePartitions.getItems().clear();
+                remplirListe();
             }
             else {
                 nomPartition.clear();
