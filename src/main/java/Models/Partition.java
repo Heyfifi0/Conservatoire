@@ -17,9 +17,10 @@ public class Partition {
     private IntegerProperty id;
     private StringProperty nomPartition;
     private StringProperty nomAuteur;
+    private IntegerProperty numeroPage;
     
     /**
-     * Constructeur de la classe Partition.
+     * Constructeur de la classe Partition, pour toutes les partitions.
      * @param id L'identifiant de la partition.
      * @param nomPartition Le nom de la partition.
      * @param nomAuteur Le nom de l'auteur de la partition.
@@ -29,6 +30,21 @@ public class Partition {
         this.id = new SimpleIntegerProperty(id);
         this.nomPartition = new SimpleStringProperty(nomPartition);
         this.nomAuteur = new SimpleStringProperty(nomAuteur);
+    }
+    
+    /**
+     * Constructeur de la classe Partition, pour les partitions de l'élève.
+     * @param id L'identifiant de la partition.
+     * @param nomPartition Le nom de la partition.
+     * @param nomAuteur Le nom de l'auteur de la partition.
+     * @param numeroPage Le numéro de la page.
+     */
+    public Partition(Integer id, String nomPartition, String nomAuteur, Integer numeroPage)
+    {
+        this.id = new SimpleIntegerProperty(id);
+        this.nomPartition = new SimpleStringProperty(nomPartition);
+        this.nomAuteur = new SimpleStringProperty(nomAuteur);
+        this.numeroPage = new SimpleIntegerProperty(numeroPage);
     }
     
     
@@ -48,6 +64,11 @@ public class Partition {
         return this.nomAuteur.get();
     }
     
+    public Integer getNumeroPage()
+    {
+        return this.numeroPage.get();
+    }
+    
     // Getters (Property)
     public IntegerProperty getIdProperty()
     {
@@ -62,5 +83,10 @@ public class Partition {
     public StringProperty getNomAuteurProperty()
     {
         return this.nomAuteur;
+    }
+    
+    public IntegerProperty getNumeroPageProperty()
+    {
+        return this.numeroPage;
     }
 }

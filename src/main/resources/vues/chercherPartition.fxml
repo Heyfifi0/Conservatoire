@@ -17,7 +17,7 @@
          <font>
             <Font size="15.0" />
          </font></Label>
-      <TableView fx:id="listePartitions" layoutX="33.0" layoutY="80.0" prefHeight="300.0" prefWidth="325.0">
+      <TableView fx:id="listePartitions" layoutX="33.0" layoutY="80.0" prefHeight="300.0" prefWidth="400.0">
         <columns>
           <TableColumn fx:id="colonneNom" prefWidth="140.0" text="Nom" />
           <TableColumn fx:id="colonneAuteur" prefWidth="128.0" text="Auteur" />
@@ -27,7 +27,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="barreRecherche" layoutX="33.0" layoutY="55.0" prefWidth="190.0" />
+      <TextField fx:id="barreRecherche" layoutX="33.0" layoutY="55.0" onKeyTyped="#rechercherAuteur" prefWidth="190.0" />
       <Label layoutX="33.0" layoutY="34.0" text="Rechercher par auteur :">
          <font>
             <Font size="15.0" />

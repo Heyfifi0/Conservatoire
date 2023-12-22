@@ -19,8 +19,3 @@ INSERT INTO PARTITIONS (NOM, AUTEUR) VALUES
 ("The Kids From Yesterday", "My Chemical Romance"),
 ("Evacuate The Dancefloor", "Cascada"),
 ("I'm Picky", "Shaka Ponk");
-
-
--- PARTITION_ELEVE
-INSERT INTO PARTITION_ELEVE VALUES
-(1, 2, 2);

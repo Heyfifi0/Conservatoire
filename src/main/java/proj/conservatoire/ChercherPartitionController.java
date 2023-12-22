@@ -30,9 +30,9 @@ import javafx.scene.control.TextField;
 public class ChercherPartitionController implements Initializable {
     
     @FXML
-    private TableView<?> listePartitions;
+    private TableView<Partition> listePartitions;
     
-    private final ObservableList<?> lesPartitions = FXCollections.observableArrayList();
+    private final ObservableList<Partition> lesPartitions = FXCollections.observableArrayList();
     
     @FXML
     private TableColumn<Partition, String> colonneNom;
@@ -41,7 +41,7 @@ public class ChercherPartitionController implements Initializable {
     private TableColumn<Partition, String> colonneAuteur;
 
     @FXML
-    private TableColumn<Integer, String> colonnePage;
+    private TableColumn<Partition, Number> colonnePage;
     
     @FXML
     private TextField barreRecherche;
@@ -55,6 +55,11 @@ public class ChercherPartitionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         listePartitions.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         
+        colonneNom.setCellValueFactory(cellData -> cellData.getValue().getNomPartitionProperty());
+        colonneAuteur.setCellValueFactory(cellData -> cellData.getValue().getNomAuteurProperty());
+        colonnePage.setCellValueFactory(cellData -> cellData.getValue().getNumeroPageProperty());
+
+
         try {
             remplirListe();
         } catch (SQLException ex) {
@@ -75,7 +80,40 @@ public class ChercherPartitionController implements Initializable {
         
         while(res.next())
         {
-            // TODO (faire une classe PartitionEleve / Classeur ?)
+            Integer id = res.getInt("ID");
+            String nom = res.getString("NOM");
+            String auteur = res.getString("AUTEUR");
+            Integer numeroPage = res.getInt("NUM_PAGE_CLASSEUR");
+            
+            Partition partition = new Partition(id, nom, auteur, numeroPage);
+            
+            lesPartitions.add(partition);
+        }
+        listePartitions.setItems(lesPartitions);
+    }
+    
+    /**
+     * Permet de rechercher une partition par auteur,
+     * avec la barre de recherche.
+     */
+    public void rechercherAuteur()
+    {
+        ObservableList<Partition> filteredPartitions = FXCollections.observableArrayList();
+        
+        for(Partition partition : listePartitions.getItems())
+        {
+            if(partition.getNomAuteur().contains(barreRecherche.getText()) && barreRecherche.getText().length() > 0)
+            {
+                filteredPartitions.add(partition);
+            }
+        }
+        
+        if(barreRecherche.getText().equals(""))
+        {
+            listePartitions.setItems(lesPartitions);
+        }
+        else{
+            listePartitions.setItems(filteredPartitions);
         }
     }
 }

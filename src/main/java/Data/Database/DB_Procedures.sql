@@ -39,9 +39,10 @@ END $
 -- Récupère les partitions d'un élève donné.
 CREATE OR REPLACE PROCEDURE getPartitionEleve(IN idEleve INT(50))
 BEGIN
-    SELECT *
-    FROM PARTITION_ELEVE
-    WHERE ELE_ID = idEleve;
+    SELECT P.ID, P.NOM, P.AUTEUR, PE.NUM_PAGE_CLASSEUR
+    FROM PARTITIONS P
+    JOIN PARTITION_ELEVE PE ON PE.PAR_ID = P.ID
+    WHERE PE.ELE_ID = idEleve;
 END $
 
 
