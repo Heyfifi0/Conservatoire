@@ -5,3 +5,8 @@
 .mainFxmlClass {
 
 }
+
+.menuButtons {
+    -fx-background-color: transparent;
+    
+}

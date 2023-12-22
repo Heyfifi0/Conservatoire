@@ -5,3 +5,7 @@
 .mainFxmlClass {
 
 }
+
+#validerButton:hover {
+    -fx-color: #34495e;
+}

@@ -27,7 +27,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="367.0" layoutY="51.0" mnemonicParsing="false" onMouseClicked="#showAjouterPartition" prefHeight="25.0" prefWidth="149.0" text="Ajouter une partition" />
+      <Button fx:id="ajouterPartition" layoutX="367.0" layoutY="51.0" mnemonicParsing="false" onMouseClicked="#showAjouterPartition" prefHeight="25.0" prefWidth="149.0" text="Ajouter une partition" />
       <Label fx:id="labelNom" layoutX="367.0" layoutY="86.0" text="Nom:">
          <font>
             <Font size="15.0" />

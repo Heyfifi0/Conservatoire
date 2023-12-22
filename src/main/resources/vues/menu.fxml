@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="splitPane" dividerPositions="0.24" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proj.conservatoire.MenuController">
+<SplitPane fx:id="splitPane" dividerPositions="0.24" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proj.conservatoire.MenuController">
   <items>
     <AnchorPane fx:id="menuPane" minHeight="0.0" minWidth="0.0">
          <children>
@@ -25,19 +25,19 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="211.0">
                      <children>
-                        <Button fx:id="lienHoraires" focusTraversable="false" layoutX="9.0" layoutY="23.0" mnemonicParsing="false" onAction="#afficherVue" text="Consulter les horaires" userData="/vues/horaires.fxml">
+                        <Button fx:id="lienHoraires" focusTraversable="false" layoutX="9.0" layoutY="23.0" mnemonicParsing="false" onAction="#afficherVue" styleClass="menuButtons" text="Consulter les horaires" userData="/vues/horaires.fxml">
                            <font>
                               <Font size="15.0" />
                            </font></Button>
-                        <Button fx:id="lienChercherPartition" focusTraversable="false" layoutX="9.0" layoutY="68.0" mnemonicParsing="false" onAction="#afficherVue" text="Chercher une partition" userData="/vues/chercherPartition.fxml">
+                        <Button fx:id="lienChercherPartition" focusTraversable="false" layoutX="9.0" layoutY="68.0" mnemonicParsing="false" onAction="#afficherVue" styleClass="menuButtons" text="Chercher une partition" userData="/vues/chercherPartition.fxml">
                            <font>
                               <Font size="15.0" />
                            </font></Button>
-                        <Button fx:id="lienAjouterPartition" focusTraversable="false" layoutX="9.0" layoutY="110.0" mnemonicParsing="false" onAction="#afficherVue" text="Ajouter une partition" userData="/vues/ajouterPartition.fxml">
+                        <Button fx:id="lienAjouterPartition" focusTraversable="false" layoutX="9.0" layoutY="110.0" mnemonicParsing="false" onAction="#afficherVue" styleClass="menuButtons" text="Ajouter une partition" userData="/vues/ajouterPartition.fxml">
                            <font>
                               <Font size="15.0" />
                            </font></Button>
-                        <Button fx:id="lienDeconnexion" focusTraversable="false" layoutX="9.0" layoutY="196.0" mnemonicParsing="false" onAction="#seDeconnecter" text="Se déconnecter" userData="/vues/connexion.fxml">
+                        <Button fx:id="lienDeconnexion" focusTraversable="false" layoutX="9.0" layoutY="196.0" mnemonicParsing="false" onAction="#seDeconnecter" styleClass="menuButtons" text="Se déconnecter" userData="/vues/connexion.fxml">
                            <font>
                               <Font size="15.0" />
                            </font></Button>

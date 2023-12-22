@@ -5,3 +5,7 @@
 .mainFxmlClass {
 
 }
+
+#ajouterPartition:hover, #ajouterClasseur:hover {
+    -fx-color: #34495e;
+}
