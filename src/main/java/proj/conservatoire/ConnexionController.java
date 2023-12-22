@@ -69,6 +69,8 @@ public class ConnexionController implements Initializable {
         }
         
         else {
+            
+            // Appel de la procédure
             CallableStatement call = DAO.getConnection().prepareCall("call getLoginEleve(?);");
             call.setString(1, login);
         
@@ -80,8 +82,7 @@ public class ConnexionController implements Initializable {
                 // Création de l'objet élève
                 createEleve(res);
                 
-                errorMessage.setText("Vous êtes connecté!");
-                //App.setRoot("/vues/ajouterPartition");
+                errorMessage.setText("Vous êtes connecté!"); // Juste pour vérifier...
             }
             else errorMessage.setText("Votre login ou votre mot de passe est incorrect!");
  
@@ -90,13 +91,12 @@ public class ConnexionController implements Initializable {
     }
     
     /**
-     * Crée un élève à partir de la base de données.
+     * Crée un objet de type Eleve à partir de la base de données.
      * @param res
      * @throws SQLException 
      */
     private void createEleve(ResultSet res) throws SQLException
     {
-        
         Integer id = res.getInt("ID");
         String nom = res.getString("NOM");
         String prenom = res.getString("PRENOM");

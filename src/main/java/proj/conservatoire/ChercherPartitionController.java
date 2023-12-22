@@ -68,11 +68,12 @@ public class ChercherPartitionController implements Initializable {
     }    
     
     /**
-     * Remplit la liste des partitions de l'élève à partir de la BDD.
+     * Remplit la liste des partitions de l'élève à partir de la base de données.
      * @throws SQLException 
      */
     private void remplirListe() throws SQLException
     {
+        // Appel de la procédure
         CallableStatement call = DAO.getConnection().prepareCall("call getPartitionEleve(?);");
         call.setInt(1, App.getEleve().getId());
         
@@ -89,6 +90,8 @@ public class ChercherPartitionController implements Initializable {
             
             lesPartitions.add(partition);
         }
+        
+        // Ajout de la liste à la table
         listePartitions.setItems(lesPartitions);
     }
     
@@ -100,6 +103,7 @@ public class ChercherPartitionController implements Initializable {
     {
         ObservableList<Partition> filteredPartitions = FXCollections.observableArrayList();
         
+        // Filtrage des partitions
         for(Partition partition : listePartitions.getItems())
         {
             if(partition.getNomAuteur().contains(barreRecherche.getText()) && barreRecherche.getText().length() > 0)
@@ -108,6 +112,7 @@ public class ChercherPartitionController implements Initializable {
             }
         }
         
+        // Check si le champ est vide
         if(barreRecherche.getText().equals(""))
         {
             listePartitions.setItems(lesPartitions);

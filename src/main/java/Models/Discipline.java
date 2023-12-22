@@ -16,7 +16,7 @@ public class Discipline {
     private ArrayList<Eleve> lesEleves;
     
     /**
-     * Constructeur de la classe Discipline.
+     * Constructeur de la classe Discipline (inutilisée).
      * @param id L'identifiant de la discipline.
      * @param libelle Le libellé de la discipline.
      */

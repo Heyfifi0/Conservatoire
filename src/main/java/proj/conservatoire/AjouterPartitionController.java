@@ -83,8 +83,6 @@ public class AjouterPartitionController implements Initializable {
         colonneNom.setCellValueFactory(cellData -> cellData.getValue().getNomPartitionProperty());
         colonneAuteur.setCellValueFactory(cellData -> cellData.getValue().getNomAuteurProperty());
         
-        //listePartitions.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        
         try {
             remplirListe();
         } catch (SQLException ex) {
@@ -93,11 +91,12 @@ public class AjouterPartitionController implements Initializable {
     }
     
     /**
-     * Remplit la liste des partitions à partir de la BDD.
+     * Remplit la liste des partitions à partir de la base de données.
      * @throws SQLException 
      */
     private void remplirListe() throws SQLException
     {
+        // Appel de la procédure
         CallableStatement call = DAO.getConnection().prepareCall("call getPartitions();");
         ResultSet res = call.executeQuery();
         
@@ -110,6 +109,8 @@ public class AjouterPartitionController implements Initializable {
             Partition partition = new Partition(id, nom, auteur);
             lesPartitions.add(partition);
         }
+        
+        // Ajout de la liste à la table
         listePartitions.setItems(lesPartitions);
     }
     
@@ -150,6 +151,7 @@ public class AjouterPartitionController implements Initializable {
             
             if (alert.getResult() == ButtonType.APPLY)
             {
+                // Appel de la procédure
                 CallableStatement call = DAO.getConnection().prepareCall("call insertPartition(?, ?);");
                 call.setString(1, nom);
                 call.setString(2, auteur);
@@ -162,6 +164,7 @@ public class AjouterPartitionController implements Initializable {
                 nomPartition.clear();
                 nomAuteur.clear();
                 
+                // Rafraîchissement de la table
                 listePartitions.getItems().clear();
                 remplirListe();
             }
@@ -180,13 +183,11 @@ public class AjouterPartitionController implements Initializable {
      */
     public void ajouterPartitionClasseur() throws SQLException
     {
-        // TODO : Check si la sélection est nulle
-        
-        
         Integer idEleve = App.getEleve().getId();
         
         ObservableList<Partition> partitionsChoisies = listePartitions.getSelectionModel().getSelectedItems();
         
+        // Check si l'élève appuie sur le bouton sans avoir sélectionné une partition
         if(partitionsChoisies.isEmpty())
         {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Veuillez sélectionner une ou plusieurs partitions.", ButtonType.CLOSE);
@@ -204,13 +205,14 @@ public class AjouterPartitionController implements Initializable {
                      
                      String headerText = "Choisissez une page pour la partition : " + partition.getNomPartition() + " - " + partition.getNomAuteur();
                      
-                     // Fenêtre pour demander à l'utilisateur quelle page choisir
+                     // Fenêtre pour demander à l'utilisateur quelle page du classeur choisir
                      TextInputDialog dialog = new TextInputDialog();
                      dialog.setHeaderText(headerText);
                      dialog.showAndWait();
                      
                      String numeroPage = dialog.getEditor().getText();
-
+                     
+                     // Appel de la procédure
                      CallableStatement call = DAO.getConnection().prepareCall("call insertPartitionEleve(?, ?, ?);");
                      call.setInt(1, idEleve);
                      call.setInt(2, partition.getId());

@@ -57,7 +57,7 @@ public class MenuController implements Initializable {
     }
     
     /**
-     * Permet d'afficher la vue précisée en UserData à côté du menu.
+     * Permet d'afficher la vue précisée en UserData à côté du menu (voir menu.fxml).
      * @param event Un évènement.
      */
     @FXML
@@ -103,7 +103,7 @@ public class MenuController implements Initializable {
     }
     
     /**
-     * Active les boutons sur le menu au moment de la connexion.
+     * Active les boutons sur le menu au moment de la connexion (inutilisée).
      * @throws java.sql.SQLException
      */
     public void activerBoutons() throws SQLException

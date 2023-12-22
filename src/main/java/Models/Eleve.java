@@ -17,8 +17,6 @@ public class Eleve {
     private Integer cycle;
     private Integer anneeCycle;
     
-    private Discipline discipline; //Jsp quoi en faire...
-    
     /**
      * Constructeur de la classe Eleve.
      * @param id L'identifiant de l'élève.
