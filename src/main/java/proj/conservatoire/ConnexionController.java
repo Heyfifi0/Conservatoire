@@ -14,11 +14,16 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import static proj.conservatoire.App.loadFXML;
 
 /**
  * FXML Controller class
@@ -26,6 +31,9 @@ import javafx.scene.control.TextField;
  * @author miste
  */
 public class ConnexionController implements Initializable {
+    
+    private final String LOGIN = "tchevalier0";
+    private final String PASSWORD = "test";
     
     @FXML
     private TextField loginTextField;
@@ -48,6 +56,9 @@ public class ConnexionController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        loginTextField.setText(LOGIN);
+        passwordField.setText(PASSWORD);
+        
         errorMessage.setText("");
     }
     
@@ -83,6 +94,16 @@ public class ConnexionController implements Initializable {
                 createEleve(res);
                 
                 errorMessage.setText("Vous êtes connecté!"); // Juste pour vérifier...
+                
+                validerButton.setDisable(true);
+                
+                // Load the menu scene
+                Parent menuRoot = FXMLLoader.load(getClass().getResource("/vues/menu.fxml"));
+                Scene menuScene = new Scene(menuRoot);
+                Stage stage = (Stage) validerButton.getScene().getWindow();
+                stage.setScene(menuScene);
+                stage.show();
+                
             }
             else errorMessage.setText("Votre login ou votre mot de passe est incorrect!");
  

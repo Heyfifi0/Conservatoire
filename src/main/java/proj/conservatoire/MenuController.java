@@ -14,11 +14,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -97,7 +100,18 @@ public class MenuController implements Initializable {
         
         if(alert.getResult() == ButtonType.APPLY)
         {
-           afficherVue(event); 
+           try {
+                App.setEleve(null);
+                
+                Parent loginRoot = FXMLLoader.load(getClass().getResource("/vues/connexion_v2.fxml"));
+                Scene loginScene = new Scene(loginRoot);
+                Stage stage = (Stage) lienDeconnexion.getScene().getWindow();
+                stage.setScene(loginScene);
+                stage.show();
+                
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }

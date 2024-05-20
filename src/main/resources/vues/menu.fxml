@@ -51,7 +51,7 @@
          <children>
             <BorderPane fx:id="contentPane" layoutX="48.0" layoutY="59.0" prefHeight="398.0" prefWidth="399.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                 <center>
-                    <fx:include source="connexion.fxml" BorderPane.alignment="CENTER" />
+                    <fx:include source="horaires.fxml" BorderPane.alignment="CENTER" />
                 </center>
             </BorderPane>
          </children></AnchorPane>
